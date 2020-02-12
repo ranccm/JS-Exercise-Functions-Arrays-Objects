@@ -39,9 +39,16 @@ function addNumbers(num1, num2) {
  *   email: "leia@leia.com",
  * }
 */
-function makePersonObject(/* code here */) {
-  /* code here */
+function makePersonObject(id, name, email) {
+    return {
+    id: id, 
+    name: name,
+    email: email
+  };
 }
+makePersonObject(11, 'ranim', 'ranim@email.com')
+
+
 
 /**
  * ### Challenge `getName`
@@ -56,28 +63,39 @@ function makePersonObject(/* code here */) {
  * passing { id: 1, name: 'Leia', email: 'leia@leia.com` } as the argument,
  * the returned value should look like `Hello, my name is Leia`.
 */
-function getName(/* code here */) {
-  /* code here */
+function getName(name) {
+  return `Hello, my name is ${name.name}`;
 }
 
+console.log(getName({ id: 2, name: 'ranim', email: 'ranim@email.com' }));
 /**
  * ### Challenge `makeSmartPerson`
  * 
  * @instructions
  * This function takes a single `name` argument and returns an object.
  * The returned object has the following characteristics:
- *     It has a `name` property that contains the argument passed in.
- *     It has a `sum` method that takes two numbers as arguments
- *         and returns the result of adding them together.
- *     It has a `speak` method that takes no arguments
- *         and returns a string like `Hello, my name is {name}`.
- *         where `{name}` is the name passed into `makeSmartPerson`.
+ *  
+ * It has a `name` property that contains the argument passed in.
+ * It has a `sum` method that takes two numbers as arguments and returns the result of adding them together.
+ * It has a `speak` method that takes no arguments
+ * and returns a string like `Hello, my name is {name}`. where `{name}` is the name passed into `makeSmartPerson`.
+ * 
+ * 
 */
-function makeSmartPerson(/* code here */) {
-  /* code here */
+
+function makeSmartPerson( name ) {
+  return {
+    name: name,
+    sum: ( a, b ) => { return a + b },
+    speak: () => { return `Hello, my name is ${name} `}
+  }
 }
 
+// console.log(makeSmartPerson('ranim'))
 
+// console.log(makeSmartPerson('ranim').sum(2,4));
+
+// console.log(makeSmartPerson('ranim').speak())
 
 
 
@@ -111,6 +129,7 @@ var inventory = [
   *
   * NOTE: This example has been completed for you.
 **/
+
 function get3rdCar(inventory) {
   const the3rd = inventory.find((item, index) => {
     return index === 2 // we use 2 because index is zero-based.
@@ -166,8 +185,13 @@ function getLastCarInfo(/* code here */) {
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
-  /* code here */
+
+function getCarInfoById(inventory, id) {
+  for(var i = 0; i < inventory.length; i++){
+    if(inventory[i].id === id){
+      return `This is a ${inventory[i].car_make} ${inventory[i].car.model}`
+    }
+  }
 }
 
 /**
